@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "profile": "default",
+  "capture": {
+    "device": 0,
+    "width": 1280,
+    "height": 720,
+    "fps": 120,
+    "fourcc": "MJPG",
+    "buffer_size": 1,
+    "warmup_s": 2.0,
+    "reconnect_s": 1.0
+  },
+  "vision": {
+    "model": "models/model.onnx",
+    "conf": 0.35,
+    "iou": 0.45,
+    "max_det": 32,
+    "letterbox": "auto",
+    "providers": [
+      "CoreML",
+      "CPU"
+    ],
+    "intra_threads": 2,
+    "roi": "off",
+    "head_mode": "auto",
+    "roi_size": 512,
+    "target_classes": [
+      "body",
+      "head",
+      "st",
+      "person",
+      "enemy",
+      "target"
+    ],
+    "ignore_classes": [
+      "teammate",
+      "ai",
+      "crosshair"
+    ]
+  },
+  "tracker": {
+    "enabled": true,
+    "iou_thr": 0.25,
+    "max_age": 12,
+    "accel_noise": 3000.0,
+    "meas_noise": 3.5,
+    "size_noise": 6.0
+  },
+  "aim": {
+    "controller": "predictive",
+    "kp_near": 0.5,
+    "kp_far": 0.85,
+    "near_px": 26.0,
+    "far_px": 260.0,
+    "ki": 0.05,
+    "kd": 0.1,
+    "integral_limit": 60.0,
+    "integral_gate": 70.0,
+    "lead_gain": 0.9,
+    "lead_max": 70.0,
+    "latency_prior_s": 0.033,
+    "latency_split": 0.5,
+    "latency_window": 45,
+    "latency_min_conf": 0.5,
+    "max_step": 140.0,
+    "max_accel": 0.0,
+    "deadzone": 1.5,
+    "deadzone_exit": 5.0,
+    "output_ema": 0.9,
+    "settle_px": 7.0
+  },
+  "policy": {
+    "fov_radius": 550.0,
+    "lock_radius": 160.0,
+    "switch_margin": 55.0,
+    "coast_s": 0.18,
+    "head_bonus": 28.0,
+    "top_mask": 0.08,
+    "bottom_mask": 0.12,
+    "head_ratio": 0.11,
+    "prefer_head": true,
+    "min_hits": 1
+  },
+  "fire": {
+    "mode": "single",
+    "radius": 9.0,
+    "inset": 0.06,
+    "dwell_s": 0.04,
+    "cooldown_s": 0.12,
+    "tap_s": 0.03,
+    "max_sigma": 80.0
+  },
+  "output": {
+    "protocol": "v2",
+    "port": "auto",
+    "baud": 921600,
+    "report_hz": 500,
+    "gain": 1.0,
+    "max_per_report": 127,
+    "heartbeat_ms": 100,
+    "write_timeout_s": 0.02,
+    "dry_run": false
+  },
+  "runtime": {
+    "control_hz": 240,
+    "preview_fps": 30,
+    "watchdog_ms": 400.0,
+    "max_infer_age_s": 0.25,
+    "log_level": "INFO",
+    "log_dir": "out/logs",
+    "record": true,
+    "record_dir": "out/telemetry",
+    "metrics_interval_s": 1.0
+  }
+}

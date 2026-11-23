@@ -1,0 +1,55 @@
+<div align="right">
+
+[简体中文](NOTICE.zh-CN.md) | **English**
+
+</div>
+
+# NOTICE
+
+huakuo-valorant-yolo-aim-helper
+Copyright (C) 2026 huakuo-valorant-yolo-aim-helper contributors
+
+This program is free software: you can redistribute it and/or modify it under the terms of
+the GNU General Public License as published by the Free Software Foundation, either version 3
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.
+If not, see <https://www.gnu.org/licenses/>.
+
+--------------------------------------------------------------------------------
+Third-party components
+--------------------------------------------------------------------------------
+
+Runtime dependencies (all permissive, compatible with GPL-3.0):
+
+  numpy            BSD-3-Clause
+  opencv-python    Apache-2.0
+  onnxruntime      MIT
+  pyserial         BSD-3-Clause
+
+Optional:
+
+  PySide6          LGPL-3.0 (dynamically linked; keep its licence and relink path
+                   available when distributing binaries)
+  pynput           LGPL-3.0 (same)
+
+Firmware:
+
+  Arduino-ESP32 core 3.x   LGPL-2.1 (linked as a library; the firmware source in this
+                           repository is published under GPL-3.0)
+
+--------------------------------------------------------------------------------
+Not included
+--------------------------------------------------------------------------------
+
+* Model weights are not part of the git tree. The author's example model
+  (`7-wa-v26s-320x.onnx`) is attached to a **GitHub Release** for personal study only:
+  do not redistribute it and do not use it in any competitive setting. Its rights remain
+  with the original provider; this project makes no warranty about its accuracy or fitness.
+* If you supply your own model, make sure you hold the appropriate licence.
+* Game footage, screenshots and trademarks belong to their respective owners; vendor names
+  are mentioned only to describe compatible output formats.

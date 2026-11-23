@@ -1,0 +1,6 @@
+# 运行时依赖（最小集）。桌面端与热键为可选：
+#   pip install -e ".[ui,hotkeys]"
+numpy>=1.24
+opencv-python>=4.8
+onnxruntime>=1.16
+pyserial>=3.5

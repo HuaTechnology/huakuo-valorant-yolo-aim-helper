@@ -1,0 +1,13 @@
+#!/bin/bash
+# 免安装入口：不激活 venv、不设 PYTHONPATH 也能跑
+#   ./scripts/aim2            桌面控制台并开启瞄准
+#   ./scripts/aim2 run        纯终端运行
+#   ./scripts/aim2 doctor     环境/模型/串口体检
+set -u
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export PYTHONPATH="$ROOT/src"
+export ORT_DISABLE_TELEMETRY=1
+PY="${PYTHON:-$ROOT/.venv/bin/python}"
+[ -x "$PY" ] || PY="$(command -v python3)"
+[ $# -eq 0 ] && exec "$PY" -m dma.cli gui --aim
+exec "$PY" -m dma.cli "$@"

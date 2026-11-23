@@ -1,0 +1,20 @@
+name: Feature request
+description: New model format, new platform, performance
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What problem are you solving
+      description: describe the problem, not the solution
+    validations:
+      required: true
+  - type: textarea
+    id: how
+    attributes:
+      label: Proposed approach (optional)
+  - type: markdown
+    attributes:
+      value: |
+        Control-law changes need a before/after `aim2 sim --compare` — pure reasoning is not evidence.

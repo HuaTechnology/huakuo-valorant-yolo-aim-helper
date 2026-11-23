@@ -1,0 +1,47 @@
+name: Bug report
+description: Crashes, no motion, no fire, wrong numbers
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        "It feels off" cannot be debugged. Please attach the three items below, otherwise we can only guess.
+  - type: textarea
+    id: doctor
+    attributes:
+      label: "`aim2 doctor --probe` output"
+      description: paste the terminal output
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: session
+    attributes:
+      label: Session report
+      description: the "session: err p50 … / p95 … | shots … | latency …" line printed on exit
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. relevant config (aim.kp_far / output.gain / fire.radius)
+        2. capture resolution and rate (the `cap` field in the HUD)
+        3. symptom: no motion / jitter / no fire / misses the head
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: macOS 15.x / Python 3.12 / onnxruntime 1.31 / ESP32-S3
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Self checks
+      options:
+        - label: Ran `aim2 selftest --seconds 8`
+        - label: Confirmed it is not thermal throttling (`inf` in the HUD climbing from 4 ms to 10 ms+ is the signature)

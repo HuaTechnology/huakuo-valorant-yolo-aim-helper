@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "huakuo-valorant-yolo-aim-helper"
+version = "2.0.0"
+description = "实时视觉闭环瞄准流水线：采集卡 → ONNX 检测 → 卡尔曼跟踪 → 延迟补偿控制 → ESP32 HID"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "opencv-python>=4.8",
+    "onnxruntime>=1.16",
+    "pyserial>=3.5",
+]
+
+[project.optional-dependencies]
+ui = ["PySide6>=6.5"]
+hotkeys = ["pynput>=1.7"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.urls]
+Documentation = "https://github.com/HuaTechnology/huakuo-valorant-yolo-aim-helper/tree/main/docs"
+Issues = "https://github.com/HuaTechnology/huakuo-valorant-yolo-aim-helper/issues"
+
+[project.scripts]
+aim2 = "dma.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+# v1 modules are kept verbatim for rollback (see docs/OPERATIONS.md §7); they are
+# not linted so that a clean `ruff check .` means "the v2 code is clean".
+extend-exclude = [
+    "legacy",
+    "legacy_rdk_x5",
+    "out",
+    "src/dma/aim.py",
+    "src/dma/config.py",
+    "src/dma/gui.py",
+    "src/dma/gui_tk.py",
+    "src/dma/humanize.py",
+    "src/dma/logic.py",
+    "src/dma/main.py",
+    "src/dma/main_cli.py",
+    "src/dma/params_spec.py",
+    "src/dma/pid.py",
+    "src/dma/predict.py",
+    "src/dma/protocol.py",
+    "src/dma/qt_gui.py",
+    "src/dma/spring_fix.py",
+    "src/dma/tuner.py",
+    "src/dma/vision.py",
+    "src/dma/sinks",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+# UP006/UP035/UP045/UP037 are pure annotation-style preferences; this codebase
+# uses typing.Dict/Optional consistently and the files all start with
+# ``from __future__ import annotations``.  Keep the rules that catch real bugs.
+ignore = ["E501", "B008", "E741", "UP006", "UP035", "UP045", "UP037"]

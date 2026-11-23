@@ -1,0 +1,37 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# ---- 本地运行产物 ----
+out/
+configs/settings.json
+*.jsonl
+*.jsonl.gz
+*.log
+*.jpg
+*.png
+*.mp4
+
+# ---- 模型权重：git 里不放权重，示例模型作为 Release 附件 ----
+models/*.onnx
+models/*.onnx.data
+*.onnx
+!models/README.md
+
+# ---- 固件构建产物 ----
+firmware/**/.pio/
+firmware/**/*.bin
+firmware/**/*.elf
+firmware/**/*.map
+
+# ---- 平台垃圾 ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.bak_*
